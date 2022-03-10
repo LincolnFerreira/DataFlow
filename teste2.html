@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <input placeholder="Quantidade passageiros" id="pass1"></input><br>
+    <input placeholder="Valor passagem" id="passag1"></input><br>
+    <input placeholder="KM" id="distanc1"></input><br>
+    <!-- <input placeholder="Valor combustivel" id="combustiv1"></input><br> -->
+    <input placeholder="Numero de viagens" id="nunviagens"></input><br>
+    <button onclick="simule()">Simule</button>
+    <div id="inprint"></div>
+</body>
+</html>
+
+<script>
+    function simule(){
+
+        var passageiros = Number(pass1.value);
+        var passagem = Number(passag1.value);
+        var km = Number(distanc1.value);
+        var combustivel = 0.75; // mudar valor para variavel
+        var numero_viagens = Number(nunviagens.value);
+        
+        // por onibus
+        var viagemPreç = (passageiros * passagem); //lucro por viagem
+        var passagDia = viagemPreç * numero_viagens; //lucro por dia
+        var passagMes = ((passageiros * passagem) * passagDia) * 28;//lucro por mes
+        
+        var valorDistanc = km * combustivel;//usar calculo vitor
+        var valor_porKM = valorDistanc * numero_viagens;// usar calculo vitor
+        var valor_totalDia = (passagDia - valor_porKM);// usar calculo vitor
+
+        inprint.innerHTML = `preço por viagem: ${viagemPreç}
+        lucro dia: ${passagDia}<br>
+        Lucro mes: ${passagMes}<br>
+        valor de combustivel por km: ${valorDistanc}<br>
+        redução do valor do combustivel ${valor_porKM}<br>
+        teste valor final dia: ${valor_totalDia}<br>`
+    }
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora financeira</title>
+
+    <style>
+        
+    </style>
+</head>
+<body>
+   <h1>Calculadora financeira</h1>
+   
+    Distancia: <input placeholder="Distancia por KM" id="distancia_km"><br>
+    Viagens diaria: <input placeholder="Numeros de viagens diarias" id="viagens_diarias"><br>
+    Valor passagem: <input placeholder="Valor da passagem" id="valor_passagem"><br>
+    Quantidade de Passageiros: <input placeholder="Qtd passageiros" id="qtd_passageiros"><br>
+    <button onclick="calcular()">Calculo financeiro</button>
+    <div id="resultado"></div>
+</body>
+</html>
+
+<script>
+    function calcular(){
+       // valores:
+        var distancia = Number(distancia_km.value);
+        var viagensDia = Number(viagens_diarias.value);
+        var valorPassagem = Number(valor_passagem.value);
+        var qtdPassageiros = Number(qtd_passageiros.value);
+
+        // calculos:
+        var valor_porViagem = (valorPassagem * qtdPassageiros); //ida
+        var valor_porDia = valor_porViagem * viagensDia;
+        var valor_porMes = valor_porDia * 30;
+
+
+        // resultado:
+        resultado.innerHTML = `<br>distancia: ${distancia} <br>
+        viagem por dia: ${viagensDia} <br>
+        valor da passagem: ${valorPassagem} <br>
+        quantidade de passageiros: ${qtdPassageiros}<br><br>
+        Calculos com base na passagem da catraca:<br>
+        valor por viagem: ${valor_porViagem}<br>
+        valor por dia: ${valor_porDia}<br>
+        valor por mes: ${valor_porMes}`
+    }
+</script>
