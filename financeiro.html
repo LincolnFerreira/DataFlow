@@ -22,16 +22,17 @@
 
     Distancia: <input placeholder="Distancia por KM" id="distancia_km"><br>
     Preço do combustivel: <input placeholder="Valor combustivel" id="valor_combustivel"><br>
-    Consumo de combustivel: <input placeholder="Consumo de combustivel" id="combustivel"><br>
+    Consumo de combustivel: <input placeholder="Consumo de combustivel" id="combustivel">
 
-    <button onclick="calcular()">Calculo financeiro</button>
-    <div id="resultado"></div>
+    <button onclick="calcular()">Calculo financeiro</button><br>
+    <div id="resultado" style="float: left;"></div>
+    <div id="comparação"></div>
 </body>
 
 </html>
 
 <script>
-    function calcular(){
+    function calcular() {
         // valores:
         var distancia = Number(distancia_km.value);
         var viagensDia = Number(viagens_diarias.value);
@@ -42,8 +43,8 @@
 
         // calculos:
         var valor_porViagem = (valorPassagem * qtdPassageiros); //ida
-        var valor_porDia = valor_porViagem * viagensDia;
-        var valor_porMes = valor_porDia * 30;
+        var valor_porDia = valor_porViagem * viagensDia; //lucro
+        var valor_porMes = valor_porDia * 30; //lucro
 
         var litro_rota = consumo_combustivel * distancia;
         var litro_diario = litro_rota * viagensDia;
@@ -51,7 +52,8 @@
 
 
         // resultados:
-        resultado.innerHTML = `<br>distancia: ${distancia} <br>
+        resultado.innerHTML = `
+        <br>distancia: ${distancia} <br>
         viagem por dia: ${viagensDia} <br>
         valor da passagem: ${valorPassagem} <br>
         quantidade de passageiros: ${qtdPassageiros}<br><br>
@@ -65,5 +67,42 @@
         Gasto por rota: ${litro_rota}<br>
         Litro diario: ${litro_diario}<br>
         Gasto por dia: ${gasto_diario}`
+
+        // comparação//
+
+        // calculos:
+        //valores das porcentagems
+        var porc_Redusida = (0.20);//variavel que guarda porcentagem de redução de viagens
+        var porc_A_Passageiros = (0.10)//variavel que guarda porcentagem de passageiros a mais 
+        var num_ViagensDia_Redusido = (viagensDia - (viagensDia * porc_Redusida));//variavel que guarda calculo comparando empresa com e sem TAFT
+        var num_Passageiros_a_Mais = (qtdPassageiros + (qtdPassageiros * porc_A_Passageiros));//variavel que guarda calculo comparando empresa com e sem TAFT
+
+        //calculos:
+        var valor_porViagem = (valorPassagem * (qtdPassageiros + (qtdPassageiros * porc_A_Passageiros))); //ida
+        var valor_porDia = valor_porViagem * viagensDia;
+        var valor_porMes = valor_porDia * 30;
+
+        var litro_rota = consumo_combustivel * distancia;
+        var litro_diario = litro_rota * (viagensDia - (viagensDia * porc_Redusida));
+        var gasto_diario = litro_diario * preco_combustivel;
+
+        // resultados:
+        comparação.innerHTML = `
+        <i>Empresa que implementou TAFT</i>
+        <br>distancia: ${distancia} <br>
+        viagem por dia: ${num_ViagensDia_Redusido} <br>
+        valor da passagem: ${valorPassagem} <br>
+        quantidade de passageiros: ${num_Passageiros_a_Mais}<br><br>
+        
+        Calculos com base na passagem da catraca:<br>
+        valor por viagem: ${valor_porViagem}<br>
+        valor por dia: ${valor_porDia}<br>
+        valor por mes: ${valor_porMes}<br><br>
+        
+        Calculos com base em gastos do combustivel:<br>
+        Gasto por rota: ${litro_rota}<br>
+        Litro diario: ${litro_diario}<br>
+        Gasto por dia: ${gasto_diario}`
+
     }
 </script>
