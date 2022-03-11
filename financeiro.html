@@ -11,12 +11,16 @@
     </style>
 </head>
 <body>
-   <h1>Calculadora financeira</h1>
-   
-    Distancia: <input placeholder="Distancia por KM" id="distancia_km"><br>
-    Viagens diaria: <input placeholder="Numeros de viagens diarias" id="viagens_diarias"><br>
-    Valor passagem: <input placeholder="Valor da passagem" id="valor_passagem"><br>
+   <h1>Calculadora financeiro</h1>
+    
+    Viagens diaria: <input placeholder="Numeros de viagens diarias" id="viagens_diarias"><br> <!-- ida e volta valor deve ser especificado pela empresa em caso de km mudar na volta ou ida -->
+    Valor da passagem: <input placeholder="Valor da passagem" id="valor_passagem"><br> 
     Quantidade de Passageiros: <input placeholder="Qtd passageiros" id="qtd_passageiros"><br>
+    
+    Distancia: <input placeholder="Distancia por KM" id="distancia_km"><br>
+    Preço do combustivel: <input placeholder="Valor combustivel" id="valor_combustivel"><br>
+    Consumo de combustivel: <input placeholder="Consumo de combustivel" id="combustivel"><br>
+    
     <button onclick="calcular()">Calculo financeiro</button>
     <div id="resultado"></div>
 </body>
@@ -29,11 +33,18 @@
         var viagensDia = Number(viagens_diarias.value);
         var valorPassagem = Number(valor_passagem.value);
         var qtdPassageiros = Number(qtd_passageiros.value);
+        var preco_combustivel = Number(valor_combustivel.value);
+        var consumo_combustivel = Number(combustivel.value);
 
         // calculos:
         var valor_porViagem = (valorPassagem * qtdPassageiros); //ida
         var valor_porDia = valor_porViagem * viagensDia;
         var valor_porMes = valor_porDia * 30;
+
+        var litro_rota = consumo_combustivel * distancia;
+        var litro_diario = litro_rota * viagensDia;
+        var gasto_diario = litro_diario * preco_combustivel;
+
 
 
         // resultado:
@@ -41,9 +52,15 @@
         viagem por dia: ${viagensDia} <br>
         valor da passagem: ${valorPassagem} <br>
         quantidade de passageiros: ${qtdPassageiros}<br><br>
+        
         Calculos com base na passagem da catraca:<br>
         valor por viagem: ${valor_porViagem}<br>
         valor por dia: ${valor_porDia}<br>
-        valor por mes: ${valor_porMes}`
+        valor por mes: ${valor_porMes}<br><br>
+        
+        Calculos com base em gastos do combustivel:<br>
+        Gasto por rota: ${litro_rota}<br>
+        Litro diario: ${litro_diario}<br>
+        Gasto por dia: ${gasto_diario}`
     }
 </script>
