@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,28 +8,31 @@
     <title>Calculadora financeira</title>
 
     <style>
-        
+
     </style>
 </head>
+
 <body>
-   <h1>Calculadora financeiro</h1>
-    
-    Viagens diaria: <input placeholder="Numeros de viagens diarias" id="viagens_diarias"><br> <!-- ida e volta valor deve ser especificado pela empresa em caso de km mudar na volta ou ida -->
-    Valor da passagem: <input placeholder="Valor da passagem" id="valor_passagem"><br> 
+    <h1>Calculadora financeira</h1>
+
+    Viagens diaria: <input placeholder="Numeros de viagens diarias" id="viagens_diarias"><br>
+    <!-- ida e volta valor deve ser especificado pela empresa em caso de km mudar na volta ou ida -->
+    Valor da passagem: <input placeholder="Valor da passagem" id="valor_passagem"><br>
     Quantidade de Passageiros: <input placeholder="Qtd passageiros" id="qtd_passageiros"><br>
-    
+
     Distancia: <input placeholder="Distancia por KM" id="distancia_km"><br>
     Preço do combustivel: <input placeholder="Valor combustivel" id="valor_combustivel"><br>
     Consumo de combustivel: <input placeholder="Consumo de combustivel" id="combustivel"><br>
-    
+
     <button onclick="calcular()">Calculo financeiro</button>
     <div id="resultado"></div>
 </body>
+
 </html>
 
 <script>
     function calcular(){
-       // valores:
+        // valores:
         var distancia = Number(distancia_km.value);
         var viagensDia = Number(viagens_diarias.value);
         var valorPassagem = Number(valor_passagem.value);
@@ -46,8 +50,7 @@
         var gasto_diario = litro_diario * preco_combustivel;
 
 
-
-        // resultado:
+        // resultados:
         resultado.innerHTML = `<br>distancia: ${distancia} <br>
         viagem por dia: ${viagensDia} <br>
         valor da passagem: ${valorPassagem} <br>
