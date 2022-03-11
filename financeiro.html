@@ -27,6 +27,8 @@
     <button onclick="calcular()">Calculo financeiro</button><br>
     <div id="resultado" style="float: left;"></div>
     <div id="comparação"></div>
+
+    <div id="grafico" style="background-color: red; color: white; height: 20px; width: 0%;"></div>
 </body>
 
 </html>
@@ -44,6 +46,7 @@
         // calculos:
         var valor_porViagem = (valorPassagem * qtdPassageiros); //ida
         var valor_porDia = valor_porViagem * viagensDia; //lucro
+        var renda_antiga = valor_porDia;
         var valor_porMes = valor_porDia * 30; //lucro
 
         var litro_rota = consumo_combustivel * distancia;
@@ -72,25 +75,28 @@
 
         // calculos:
         //valores das porcentagems
-        var porc_Redusida = (0.20);//variavel que guarda porcentagem de redução de viagens
-        var porc_A_Passageiros = (0.10)//variavel que guarda porcentagem de passageiros a mais 
-        var num_ViagensDia_Redusido = (viagensDia - (viagensDia * porc_Redusida));//variavel que guarda calculo comparando empresa com e sem TAFT
-        var num_Passageiros_a_Mais = (qtdPassageiros + (qtdPassageiros * porc_A_Passageiros));//variavel que guarda calculo comparando empresa com e sem TAFT
+        var porc_Reduzida = (0.20);//variavel que guarda porcentagem de redução de viagens (dado fictício)
+        var porc_A_Passageiros = (0.10)//variavel que guarda porcentagem de passageiros a mais (dado fictício)
+        var num_ViagensDia_Reduzido = (viagensDia - (viagensDia * porc_Reduzida));//variavel que guarda calculo comparando empresa com e sem TAFT
+        var num_Passageiros_a_Mais = Math.round(qtdPassageiros + (qtdPassageiros * porc_A_Passageiros));//variavel que guarda calculo comparando empresa com e sem TAFT
 
         //calculos:
-        var valor_porViagem = (valorPassagem * (qtdPassageiros + (qtdPassageiros * porc_A_Passageiros))); //ida
-        var valor_porDia = valor_porViagem * viagensDia;
-        var valor_porMes = valor_porDia * 30;
+        valor_porViagem = (valorPassagem * (qtdPassageiros + (qtdPassageiros * porc_A_Passageiros))); //ida
+        valor_porDia = valor_porViagem * viagensDia;
+        var renda_taft = valor_porDia;
+        valor_porMes = valor_porDia * 30;
 
-        var litro_rota = consumo_combustivel * distancia;
-        var litro_diario = litro_rota * (viagensDia - (viagensDia * porc_Redusida));
-        var gasto_diario = litro_diario * preco_combustivel;
+        var variacao_percentual = ((renda_taft - renda_antiga) / renda_antiga) * 100;
+
+        litro_rota = consumo_combustivel * distancia;
+        litro_diario = litro_rota * (viagensDia - (viagensDia * porc_Reduzida));
+        gasto_diario = litro_diario * preco_combustivel;
 
         // resultados:
         comparação.innerHTML = `
         <i>Empresa que implementou TAFT</i>
         <br>distancia: ${distancia} <br>
-        viagem por dia: ${num_ViagensDia_Redusido} <br>
+        viagem por dia: ${num_ViagensDia_Reduzido} <br>
         valor da passagem: ${valorPassagem} <br>
         quantidade de passageiros: ${num_Passageiros_a_Mais}<br><br>
         
@@ -102,6 +108,10 @@
         Calculos com base em gastos do combustivel:<br>
         Gasto por rota: ${litro_rota}<br>
         Litro diario: ${litro_diario}<br>
-        Gasto por dia: ${gasto_diario}`
+        Gasto por dia: ${gasto_diario}`;
+
+        // grafico de aumento;
+        grafico.innerHTML = `${variacao_percentual}%`;
+        grafico.style.width = `${variacao_percentual}%`;
     }
 </script>
