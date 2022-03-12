@@ -1,0 +1,117 @@
+body {
+    background-image: url(images/background-image.png);
+}
+
+input {
+    border: 3px solid #0088cb;
+    border-radius: 3px; /*arredondar bordas*/
+    text-align: center; /*alinhar texto*/
+    color: #0088cb;
+    font-size: 16px;
+    font-weight: bold; /*força da fonte / negrito*/
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+b {
+    color: #0088cb;
+}
+
+.DFbutton_blue {
+    width: 12%;
+    background-color: #0088cb;
+    border: 3px solid #0088cb;
+    border-radius: 5px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer; /*estilo e estado do cursor do windows. ex: apontando, segurando, arrastando*/
+}
+
+.span_com_sem {
+    margin-left: 40%;
+}
+
+.span_taft {
+    color: #0088cb;
+}
+
+.span_bullets {
+    margin-left: 15%;
+}
+
+.span_title {
+    margin-left: 10%;
+}
+
+#div_title {
+    width: 18%;
+    margin-left: 42.5%;
+    margin-top: 10px;
+    background-color: #0088cb;
+    border: 3px solid #0088cb;
+    border-radius: 3px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#div_main {
+    width: 40%;
+    height: fit-content; /*adapta o tamanho da div, pra aumentar ou diminuir de acordo com o que tem ou deixa de ter dentro dela de forma automatica*/
+    margin-left: 31.5%;
+    margin-top: -0.1%;
+    background-color: #FFFFFF;
+    border: 7px solid #0088cb;
+    border-radius: 5px;
+}
+
+#div_input {
+    float: left;
+    width: 60%;
+    margin-top: 2%;
+    margin-left: 19%;
+    padding-top: 1%; /*margin só que dos elementos de dentro*/
+    border: 3px dashed #0088cb;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#button_simular {
+    margin-left: 37.8%;
+    margin-top: 3%;
+}
+
+#div_resultado_default {
+    line-height: 120%; /*espaçamento entre as linhas*/
+    float: left;
+    width: 50%;
+    margin-left: -0.3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#div_resultado_taft {
+    line-height: 120%;
+    width: 50%;
+    margin-left: 50%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#div_grafico {
+    background-color: red;
+    color: white;
+    height: 20px;
+    width: 0%;
+}
