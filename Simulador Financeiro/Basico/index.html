@@ -10,13 +10,13 @@
 
 <body style="background-color: rgb(0, 0, 0);">
 
-    <div id="div_main" style="background-color: white; width: 45%; height: 900px; margin-left: 28%;">
+    <div style="background-color: white; width: 45%; height: 900px; margin-left: 28%;">
 
         <h1 style="margin-left: 22%;">
             SIMULADOR FINANCEIRO
         </h1>
 
-        <div id="div_input" style="margin-left: 40%;">
+        <div style="margin-left: 40%;">
 
             Viagens Diárias<br>
             <input placeholder="percursos completos" id="input_viagens_diarias"><br><br>
@@ -65,12 +65,12 @@
 
 <script>
     function limpar_campos() {
-        input_viagens_diarias.value = null; //deixa a input vazia, sem valor, pra ficar bonitinho, RESETA os campos
-        input_valor_passagem.value = null;
-        input_qtd_passageiros.value = null;
-        input_distancia_km.value = null;
-        input_preco_combustivel.value = null;
-        input_consumo_combustivel.value = null;
+        input_viagens_diarias.value = ""; //deixa a input vazia, sem valor, pra ficar bonitinho, RESETA os campos
+        input_valor_passagem.value = "";
+        input_qtd_passageiros.value = "";
+        input_distancia_km.value = "";
+        input_preco_combustivel.value = "";
+        input_consumo_combustivel.value = "";
 
         // zerar div de resultados sem TAFT
         div_resultado_default.innerHTML = ""; //tira todo o conteúdo da div, RESETA ela 
@@ -82,7 +82,7 @@
     }
 
     function calculo_financeiro() {
-        /* DEBUG
+        /* DEBUG PARA ATRIBUIR VALORES AOS INPUTS AUTOMATICAMENTE :)
         input_viagens_diarias.value = 53 ;
         input_valor_passagem.value = 4.40;
         input_qtd_passageiros.value = 67;
@@ -90,8 +90,6 @@
         input_preco_combustivel.value = 5.62;
         input_consumo_combustivel.value = 0.403;
         */
-
-
 
         // valores:
         var viagens_diarias = Number(input_viagens_diarias.value);
@@ -114,23 +112,23 @@
 
         // resultados:
         div_resultado_default.innerHTML = `
-        <span class="span_com_sem"><i>Sem <span class="span_taft">TAFT</span></i></span> <br>
-        <span class="span_title"><u>Resumo</u></span> <br>
-        <span class="span_bullets">> Distância: ${distancia}km</span> <br>
-        <span class="span_bullets">> Viagens: <b><u>${viagens_diarias}</u></b></span> <br>
-        <span class="span_bullets">> Passagem: ${valor_passagem.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span> <br>
-        <span class="span_bullets">> Passageiros por Percurso: ${qtd_passageiros}</span> <br><br>
+        Sem TAFT <br>
+        Resumo <br>
+        > Distância: ${distancia}km <br>
+        > Viagens: ${viagens_diarias} <br>
+        > Passagem: ${valor_passagem.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} <br>
+        > Passageiros por Percurso: ${qtd_passageiros} <br><br>
         
-        <span class="span_title"><u>Renda com Passagem</u></span> <br>
-        <span class="span_bullets">> Percurso Completo: ${renda_viagem.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span> <br>
-        <span class="span_bullets">> Diariamente: ${rend_diaria.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span> <br>
-        <span class="span_bullets">> Mensal: <b>${renda_mensal.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b></span> <br><br>
-         
-        <span class="span_title"><u>Gastos com Combustível</u></span> <br>
-        <span class="span_bullets">> Combustível por Percurso: ${litro_percurso.toFixed(2)}L</span> <br>
-        <span class="span_bullets">> Gasto por Percurso: ${gasto_percurso.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span> <br>
-        <span class="span_bullets">> Combustível Diariamente: ${litro_diario.toFixed(2)}L</span> <br>
-        <span class="span_bullets">> Gasto Diário: <b><u>${gasto_diario.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</u></b></span>
+        Renda com Passagem <br>
+        > Percurso Completo: ${renda_viagem.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} <br>
+        > Diariamente: ${rend_diaria.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} <br>
+        > Mensal: ${renda_mensal.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} <br><br>
+        
+        Gastos com Combustível <br>
+        > Combustível por Percurso: ${litro_percurso.toFixed(2)}L <br>
+        > Gasto por Percurso: ${gasto_percurso.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} <br>
+        > Combustível Diariamente: ${litro_diario.toFixed(2)}L <br>
+        > Gasto Diário: ${gasto_diario.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
         `
 
         div_resultado_default.style.border = "3px solid black";
@@ -156,23 +154,23 @@
 
         // resultados:
         div_resultado_taft.innerHTML = `
-        <span class="span_com_sem"><i>Com <span class="span_taft">TAFT</span></i></span> <br>
-        <span class="span_title"><u>Resumo</u><span> <br>
-        <span class="span_bullets">> Distância: ${distancia}km</span> <br>
-        <span class="span_bullets">> Viagens: <b><u>${num_viagens_diarias_otimizadas.toFixed(0)}</u></b></span> <br>
-        <span class="span_bullets">> Passagem: ${valor_passagem.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span> <br>
-        <span class="span_bullets">> Passageiros por Volta: ${qtd_passageiros_nova.toFixed(0)}</span> <br><br>
+        Sem TAFT <br>
+        Resumo <br>
+        > Distância: ${distancia}km <br>
+        > Viagens: ${num_viagens_diarias_otimizadas} <br>
+        > Passagem: ${valor_passagem.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} <br>
+        > Passageiros por Percurso: ${qtd_passageiros_nova} <br><br>
         
-        <span class="span_title"><u>Renda com Passagem</u></span> <br>
-        <span class="span_bullets">> Percurso Completo: ${renda_viagem.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span> <br>
-        <span class="span_bullets">> Diariamente: ${rend_diaria.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span> <br>
-        <span class="span_bullets">> Mensal: <b>${renda_mensal.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</b></span> <br><br>
+        Renda com Passagem <br>
+        > Percurso Completo: ${renda_viagem.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} <br>
+        > Diariamente: ${rend_diaria.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} <br>
+        > Mensal: ${renda_mensal.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} <br><br>
         
-        <span class="span_title"><u>Gastos com Combustível</u></span> <br>
-        <span class="span_bullets">> Combustível por Percurso: ${litro_percurso.toFixed(2)}L</span> <br>
-        <span class="span_bullets">> Gasto por Percurso: ${gasto_percurso.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span> <br>
-        <span class="span_bullets">> Combustível Diariamente: ${litro_diario.toFixed(2)}L</span> <br>
-        <span class="span_bullets">> Gasto Diário: <b><u>${gasto_diario.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</u></b></span>
+        Gastos com Combustível <br>
+        > Combustível por Percurso: ${litro_percurso.toFixed(2)}L <br>
+        > Gasto por Percurso: ${gasto_percurso.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} <br>
+        > Combustível Diariamente: ${litro_diario.toFixed(2)}L <br>
+        > Gasto Diário: ${gasto_diario.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
         `
 
         div_resultado_taft.style.border = "3px solid black";

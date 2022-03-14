@@ -13,7 +13,7 @@
 <body>
 
     <div id="div_title">
-        CALCULADORA FINANCEIRA
+        SIMULADOR FINANCEIRO
     </div>
 
     <div id="div_main">
@@ -67,12 +67,12 @@
 
 <script>
     function limpar_campos() {
-        input_viagens_diarias.value = null; //deixa a input vazia, sem valor, pra ficar bonitinho, RESETA os campos
-        input_valor_passagem.value = null;
-        input_qtd_passageiros.value = null;
-        input_distancia_km.value = null;
-        input_preco_combustivel.value = null;
-        input_consumo_combustivel.value = null;
+        input_viagens_diarias.value = ""; //deixa a input vazia, sem valor, pra ficar bonitinho, RESETA os campos
+        input_valor_passagem.value = "";
+        input_qtd_passageiros.value = "";
+        input_distancia_km.value = "";
+        input_preco_combustivel.value = "";
+        input_consumo_combustivel.value = "";
 
         // zerar div de resultados sem TAFT
         div_resultado_default.innerHTML = ""; //tira todo o conteúdo da div, RESETA ela 
@@ -84,7 +84,7 @@
     }
 
     function calculo_financeiro() {
-        /* DEBUG
+        /* DEBUG 
         input_viagens_diarias.value = 53;
         input_valor_passagem.value = 4.40;
         input_qtd_passageiros.value = 67;
@@ -92,8 +92,6 @@
         input_preco_combustivel.value = 5.62;
         input_consumo_combustivel.value = 0.403;
         */
-
-
 
         // valores:
         var viagens_diarias = Number(input_viagens_diarias.value);
